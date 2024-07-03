@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+</head>
+
+<body>
+    <div onclick="connectToWallet()" id="ton-connect">Connect Wallet</div>
+
+    <script>
+        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'http://127.0.0.1:5500/tonconnect-manifest.json', 
+            buttonRootId: 'ton-connect'
+        });
+        
+       
+
+
+        async function connectToWallet() {
+    try {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        if (connectedWallet) {
+            // Do something with connectedWallet if needed
+            console.log("Connected wallet:", connectedWallet);
+        } else {
+            throw new Error("Wallet was not connected");
+        }
+    } catch (error) {
+        // Handle specific errors
+        if (error instanceof TypeError) {
+            console.error("Type error occurred:", error);
+        } else if (error.message === "Wallet was not connected") {
+            console.error("Error:", error.message);
+        } else {
+            console.error("Unknown error occurred:", error);
+        }
+    }
+}
+
+    </script>
+</body>
+
+</html>

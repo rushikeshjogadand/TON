@@ -1,0 +1,5 @@
+{
+    "url": "https://your-app-url/tonconnect-manifest.json",
+    "name": "TON Vote",
+    "iconUrl": "https://ton.vote/logo.png"
+}
