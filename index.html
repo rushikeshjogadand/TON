@@ -24,22 +24,32 @@
     try {
         const connectedWallet = await tonConnectUI.connectWallet();
         if (connectedWallet) {
-            // Do something with connectedWallet if needed
+           
             console.log("Connected wallet:", connectedWallet);
+
+            // Example: Update UI or trigger further actions with the connected wallet
+            updateUIWithWalletInfo(connectedWallet);
         } else {
+          
             throw new Error("Wallet was not connected");
         }
     } catch (error) {
-        // Handle specific errors
-        if (error instanceof TypeError) {
-            console.error("Type error occurred:", error);
-        } else if (error.message === "Wallet was not connected") {
-            console.error("Error:", error.message);
-        } else {
-            console.error("Unknown error occurred:", error);
-        }
+       
+        console.error("Error connecting to wallet:", error);
     }
 }
+
+function updateUIWithWalletInfo(walletInfo) {
+    // Example: Update the UI elements with wallet information
+    const walletNameElement = document.getElementById("wallet-name");
+    const walletAddressElement = document.getElementById("wallet-address");
+
+    if (walletNameElement && walletAddressElement) {
+        walletNameElement.textContent = walletInfo.name; // Example property (adjust based on actual wallet info structure)
+        walletAddressElement.textContent = walletInfo.address; // Example property
+    }
+}
+
 
     </script>
 </body>
